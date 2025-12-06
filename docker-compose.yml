@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  ryde-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ryde-rent-a-car
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Add your environment variables here
+      # - NEXT_PUBLIC_API_URL=your_api_url
+      # - DATABASE_URL=your_database_url
+    restart: unless-stopped
+    networks:
+      - ryde-network
+
+networks:
+  ryde-network:
+    driver: bridge
